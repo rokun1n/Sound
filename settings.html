@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Налаштування — SoundMood</title>
+    <link rel="stylesheet" href="css/style.css"/>
+</head>
+<body>
+<div class="page-wrapper">
+
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="nav-logo">
+                <div class="logo-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg></div>
+                SoundMood
+            </a>
+            <div class="nav-links">
+                <a href="index.html"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg><span>Головна</span></a>
+                <a href="settings.html"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg><span>Налаштування</span></a>
+                <a href="generator.html"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg><span>Генератор</span></a>
+                <a href="result.html"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg><span>Результат</span></a>
+                <a href="history.html"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="12 8 12 12 14 14"/><path d="M3.05 11a9 9 0 1 0 .5-3.5"/><polyline points="3 4 3 11 10 11"/></svg><span>Історія</span></a>
+                <a href="about.html"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg><span>Про нас</span></a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <div class="container" style="max-width:760px;">
+
+            <div class="fade-up" style="margin-bottom:36px;">
+                <h1 class="page-title">Налаштування</h1>
+                <p class="page-subtitle">Налаштуй параметри за замовчуванням для генерації саундтреків</p>
+            </div>
+
+            <!-- Mood -->
+            <div class="card fade-up fade-up-1" style="margin-bottom:20px;">
+                <h2 class="section-title">🎭 Настрій</h2>
+                <p class="label">Обери один або кілька настроїв</p>
+                <div class="chip-group">
+                    <div class="chip selected">😊 Радісний</div>
+                    <div class="chip">😔 Сумний</div>
+                    <div class="chip">😤 Енергійний</div>
+                    <div class="chip">😌 Спокійний</div>
+                    <div class="chip">😮 Драматичний</div>
+                    <div class="chip">🤩 Надихаючий</div>
+                    <div class="chip">😴 Розслаблений</div>
+                    <div class="chip">😰 Напружений</div>
+                    <div class="chip">🤔 Задумливий</div>
+                    <div class="chip">🥳 Святковий</div>
+                </div>
+            </div>
+
+            <!-- Genre -->
+            <div class="card fade-up fade-up-2" style="margin-bottom:20px;">
+                <h2 class="section-title">🎵 Жанр</h2>
+                <div class="form-group" style="margin-bottom:0;">
+                    <p class="label">Основний жанр</p>
+                    <select class="form-control">
+                        <option>Ambient</option>
+                        <option>Electronic</option>
+                        <option>Jazz</option>
+                        <option>Classical</option>
+                        <option>Rock</option>
+                        <option>Lo-Fi</option>
+                        <option>Cinematic</option>
+                        <option>Pop</option>
+                        <option>R&B</option>
+                        <option>Folk</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- BPM -->
+            <div class="card fade-up fade-up-2" style="margin-bottom:20px;">
+                <h2 class="section-title">🥁 Темп (BPM)</h2>
+                <p class="label">Поточне значення: <span class="range-value" id="bpmDisplay">90</span> BPM</p>
+                <div class="range-wrap">
+                    <input type="range" min="40" max="200" value="90" id="bpmRange"/>
+                    <div class="range-labels"><span>40 — Повільно</span><span>200 — Швидко</span></div>
+                </div>
+                <div style="display:flex;gap:8px;margin-top:16px;flex-wrap:wrap;">
+                    <button class="chip" onclick="setBPM(60)">60 — Повільно</button>
+                    <button class="chip" onclick="setBPM(90)">90 — Помірно</button>
+                    <button class="chip" onclick="setBPM(120)">120 — Жваво</button>
+                    <button class="chip" onclick="setBPM(160)">160 — Швидко</button>
+                </div>
+            </div>
+
+            <!-- Instruments -->
+            <div class="card fade-up fade-up-3" style="margin-bottom:20px;">
+                <h2 class="section-title">🎸 Інструменти</h2>
+                <p class="label">Обери інструменти (до 5)</p>
+                <div class="chip-group">
+                    <div class="chip selected">🎹 Піаніно</div>
+                    <div class="chip">🎸 Гітара</div>
+                    <div class="chip selected">🥁 Барабани</div>
+                    <div class="chip">🎻 Скрипка</div>
+                    <div class="chip">🎺 Труба</div>
+                    <div class="chip">🎷 Саксофон</div>
+                    <div class="chip">🪗 Акордеон</div>
+                    <div class="chip">🎵 Синтезатор</div>
+                    <div class="chip">🎙️ Вокал</div>
+                    <div class="chip">🪕 Бас-гітара</div>
+                    <div class="chip">🎻 Віолончель</div>
+                    <div class="chip">🪘 Перкусія</div>
+                </div>
+            </div>
+
+            <!-- Duration -->
+            <div class="card fade-up fade-up-3" style="margin-bottom:20px;">
+                <h2 class="section-title">⏱️ Тривалість</h2>
+                <p class="label">Довжина треку: <span class="range-value" id="durDisplay">2</span> хв</p>
+                <div class="range-wrap">
+                    <input type="range" min="1" max="10" value="2" id="durRange"/>
+                    <div class="range-labels"><span>1 хв</span><span>10 хв</span></div>
+                </div>
+            </div>
+
+            <!-- Save -->
+            <div class="fade-up fade-up-4" style="display:flex;gap:12px;justify-content:flex-end;flex-wrap:wrap;">
+                <button class="btn btn-ghost" onclick="resetSettings()">Скинути</button>
+                <button class="btn btn-primary" onclick="saveSettings()">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+                    Зберегти налаштування
+                </button>
+            </div>
+
+        </div>
+    </main>
+
+    <footer><div class="container"><p>© 2025 SoundMood</p></div></footer>
+</div>
+
+<div class="toast"></div>
+<script src="js/main.js"></script>
+<script>
+    const bpmRange = document.getElementById('bpmRange');
+    const bpmDisplay = document.getElementById('bpmDisplay');
+    const durRange = document.getElementById('durRange');
+    const durDisplay = document.getElementById('durDisplay');
+    bpmRange.addEventListener('input', () => bpmDisplay.textContent = bpmRange.value);
+    durRange.addEventListener('input', () => durDisplay.textContent = durRange.value);
+    function setBPM(v) { bpmRange.value = v; bpmDisplay.textContent = v; }
+    function saveSettings() { showToast('Налаштування збережено!', '✓'); }
+    function resetSettings() { bpmRange.value = 90; bpmDisplay.textContent = 90; durRange.value = 2; durDisplay.textContent = 2; showToast('Налаштування скинуто', '↺'); }
+</script>
+</body>
+</html>

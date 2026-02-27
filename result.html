@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Результат — SoundMood</title>
+    <link rel="stylesheet" href="css/style.css"/>
+    <style>
+        .play-btn {
+            width:60px;height:60px;border-radius:50%;background:var(--accent);
+            display:grid;place-items:center;cursor:pointer;flex-shrink:0;
+            transition:all var(--transition);box-shadow:0 0 0 0 var(--accent-glow);
+        }
+        .play-btn:hover { transform:scale(1.08); box-shadow:0 0 24px var(--accent-glow); }
+        .play-btn.playing { background:var(--accent-2); }
+        .player-bar { display:flex;align-items:center;gap:16px; }
+        .timeline { flex:1;height:4px;background:var(--border);border-radius:99px;cursor:pointer; }
+        .timeline-fill { height:100%;background:linear-gradient(90deg,var(--accent),var(--accent-2));border-radius:99px;width:0%;transition:width 0.1s linear; }
+        .track-meta { display:flex;gap:8px;flex-wrap:wrap;margin-top:12px; }
+        .share-btn { display:flex;align-items:center;gap:6px;padding:8px 16px;border-radius:8px;font-size:0.8rem;font-weight:500;border:1px solid var(--border);background:var(--bg-card);color:var(--text-second);cursor:pointer;transition:all var(--transition); }
+        .share-btn:hover { border-color:var(--accent);color:var(--accent); }
+    </style>
+</head>
+<body>
+<div class="page-wrapper">
+
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="nav-logo">
+                <div class="logo-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg></div>
+                SoundMood
+            </a>
+            <div class="nav-links">
+                <a href="index.html"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg><span>Головна</span></a>
+                <a href="settings.html"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg><span>Налаштування</span></a>
+                <a href="generator.html"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg><span>Генератор</span></a>
+                <a href="result.html"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg><span>Результат</span></a>
+                <a href="history.html"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="12 8 12 12 14 14"/><path d="M3.05 11a9 9 0 1 0 .5-3.5"/><polyline points="3 4 3 11 10 11"/></svg><span>Історія</span></a>
+                <a href="about.html"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg><span>Про нас</span></a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <div class="container" style="max-width:800px;">
+
+            <div class="fade-up" style="margin-bottom:32px;">
+                <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;">
+                    <span class="badge badge-green">✓ Готово</span>
+                </div>
+                <h1 class="page-title">Ваш саундтрек</h1>
+                <p class="page-subtitle">Саундтрек успішно згенеровано. Прослухайте та збережіть.</p>
+            </div>
+
+            <!-- Player -->
+            <div class="card fade-up fade-up-1" style="margin-bottom:20px;">
+                <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;flex-wrap:wrap;gap:12px;">
+                    <div>
+                        <h2 style="font-family:'Syne',sans-serif;font-weight:700;font-size:1.3rem;" id="trackTitle">Ambient Dream #42</h2>
+                        <p style="font-size:0.875rem;color:var(--text-second);margin-top:4px;" id="trackSub">Ambient · 90 BPM · 2 хв 34 с</p>
+                    </div>
+                    <div style="display:flex;gap:8px;">
+                        <button class="share-btn" onclick="showToast('Посилання скопійовано!','🔗')">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+                            Поділитись
+                        </button>
+                        <button class="share-btn" onclick="showToast('Завантаження розпочато','⬇')">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                            Завантажити
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Waveform display -->
+                <div class="waveform paused" id="waveform" style="margin-bottom:16px;">
+                    <div class="waveform-bar" style="height:30%"></div><div class="waveform-bar" style="height:55%"></div>
+                    <div class="waveform-bar" style="height:80%"></div><div class="waveform-bar" style="height:45%"></div>
+                    <div class="waveform-bar" style="height:95%"></div><div class="waveform-bar" style="height:60%"></div>
+                    <div class="waveform-bar" style="height:35%"></div><div class="waveform-bar" style="height:75%"></div>
+                    <div class="waveform-bar" style="height:50%"></div><div class="waveform-bar" style="height:90%"></div>
+                    <div class="waveform-bar" style="height:65%"></div><div class="waveform-bar" style="height:40%"></div>
+                    <div class="waveform-bar" style="height:85%"></div><div class="waveform-bar" style="height:55%"></div>
+                    <div class="waveform-bar" style="height:70%"></div><div class="waveform-bar" style="height:45%"></div>
+                    <div class="waveform-bar" style="height:100%"></div><div class="waveform-bar" style="height:60%"></div>
+                    <div class="waveform-bar" style="height:35%"></div><div class="waveform-bar" style="height:75%"></div>
+                    <div class="waveform-bar" style="height:50%"></div><div class="waveform-bar" style="height:85%"></div>
+                    <div class="waveform-bar" style="height:40%"></div><div class="waveform-bar" style="height:65%"></div>
+                    <div class="waveform-bar" style="height:30%"></div><div class="waveform-bar" style="height:55%"></div>
+                </div>
+
+                <!-- Controls -->
+                <div class="player-bar">
+                    <div class="play-btn" id="playBtn" onclick="togglePlay()">
+                        <svg id="playIcon" width="22" height="22" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                    </div>
+                    <span style="font-size:0.78rem;color:var(--text-muted);width:36px;" id="currentTime">0:00</span>
+                    <div class="timeline" onclick="seekTo(event)"><div class="timeline-fill" id="timelineFill"></div></div>
+                    <span style="font-size:0.78rem;color:var(--text-muted);width:36px;">2:34</span>
+                </div>
+
+                <div class="track-meta">
+                    <span class="badge badge-accent">😊 Радісний</span>
+                    <span class="badge badge-muted">🎹 Піаніно</span>
+                    <span class="badge badge-muted">🥁 Барабани</span>
+                    <span class="badge badge-muted">🎵 Синтезатор</span>
+                </div>
+            </div>
+
+            <!-- Details -->
+            <div class="grid-2 fade-up fade-up-2" style="margin-bottom:20px;">
+                <div class="card card-sm">
+                    <h3 class="section-title" style="font-size:0.95rem;">Деталі треку</h3>
+                    <div style="display:flex;flex-direction:column;gap:10px;">
+                        <div style="display:flex;justify-content:space-between;font-size:0.875rem;">
+                            <span style="color:var(--text-muted);">Жанр</span><span>Ambient</span>
+                        </div>
+                        <div style="display:flex;justify-content:space-between;font-size:0.875rem;">
+                            <span style="color:var(--text-muted);">Темп</span><span>90 BPM</span>
+                        </div>
+                        <div style="display:flex;justify-content:space-between;font-size:0.875rem;">
+                            <span style="color:var(--text-muted);">Тривалість</span><span>2 хв 34 с</span>
+                        </div>
+                        <div style="display:flex;justify-content:space-between;font-size:0.875rem;">
+                            <span style="color:var(--text-muted);">Тональність</span><span>C Major</span>
+                        </div>
+                        <div style="display:flex;justify-content:space-between;font-size:0.875rem;">
+                            <span style="color:var(--text-muted);">Згенеровано</span><span id="genDate">—</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="card card-sm">
+                    <h3 class="section-title" style="font-size:0.95rem;">Оцінити результат</h3>
+                    <p style="font-size:0.8rem;color:var(--text-second);margin-bottom:14px;">Наскільки саундтрек відповідає твоєму настрою?</p>
+                    <div style="display:flex;gap:8px;font-size:1.6rem;" id="stars">
+                        <span class="star" onclick="rate(1)" style="cursor:pointer;">⭐</span>
+                        <span class="star" onclick="rate(2)" style="cursor:pointer;">⭐</span>
+                        <span class="star" onclick="rate(3)" style="cursor:pointer;">⭐</span>
+                        <span class="star" onclick="rate(4)" style="cursor:pointer;">⭐</span>
+                        <span class="star" onclick="rate(5)" style="cursor:pointer;">⭐</span>
+                    </div>
+                    <p style="font-size:0.8rem;color:var(--text-muted);margin-top:10px;" id="rateMsg">Натисни на зірку для оцінки</p>
+                </div>
+            </div>
+
+            <!-- Actions -->
+            <div class="fade-up fade-up-3" style="display:flex;gap:12px;flex-wrap:wrap;">
+                <a href="generator.html" class="btn btn-secondary">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-3.5"/></svg>
+                    Генерувати ще раз
+                </a>
+                <button class="btn btn-primary" onclick="saveThisTrack()">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/></svg>
+                    Зберегти в історію
+                </button>
+            </div>
+
+        </div>
+    </main>
+
+    <footer><div class="container"><p>© 2025 SoundMood</p></div></footer>
+</div>
+
+<div class="toast"></div>
+<script src="js/main.js"></script>
+<script>
+    document.getElementById('genDate').textContent = new Date().toLocaleDateString('uk-UA');
+    let playing = false, timer, progress = 0;
+    const DURATION = 154;
+
+    function togglePlay() {
+        playing = !playing;
+        const wv = document.getElementById('waveform');
+        const icon = document.getElementById('playIcon');
+        const btn = document.getElementById('playBtn');
+        if (playing) {
+            wv.classList.remove('paused');
+            btn.classList.add('playing');
+            icon.innerHTML = '<rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/>';
+            timer = setInterval(tick, 1000);
+        } else {
+            wv.classList.add('paused');
+            btn.classList.remove('playing');
+            icon.innerHTML = '<polygon points="5 3 19 12 5 21 5 3"/>';
+            clearInterval(timer);
+        }
+    }
+
+    function tick() {
+        if (progress >= DURATION) { progress = 0; togglePlay(); return; }
+        progress++;
+        const pct = (progress / DURATION * 100).toFixed(1);
+        document.getElementById('timelineFill').style.width = pct + '%';
+        const m = Math.floor(progress/60), s = progress%60;
+        document.getElementById('currentTime').textContent = m + ':' + String(s).padStart(2,'0');
+    }
+
+    function seekTo(e) {
+        const rect = e.currentTarget.getBoundingClientRect();
+        progress = Math.round((e.clientX - rect.left) / rect.width * DURATION);
+    }
+
+    function rate(n) {
+        const msgs = ['','Жахливо 😞','Не дуже 😕','Непогано 🙂','Добре 😊','Чудово! 🤩'];
+        document.getElementById('rateMsg').textContent = msgs[n];
+        showToast('Оцінка ' + n + '/5 збережена', '⭐');
+    }
+
+    function saveThisTrack() {
+        saveToHistory({ title:'Ambient Dream', genre:'Ambient', bpm:90, mood:'Радісний' });
+        showToast('Збережено в історію!', '✓');
+    }
+</script>
+</body>
+</html>
