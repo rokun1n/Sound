@@ -4,134 +4,255 @@
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Про нас — SoundMood</title>
-    <link rel="stylesheet" href="css/style.css"/>
 </head>
 <body>
-<div class="page-wrapper">
 
-    <nav class="navbar">
-        <div class="container">
-            <a href="index.html" class="nav-logo">
-                <div class="logo-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg></div>
-                SoundMood
-            </a>
-            <div class="nav-links">
-                <a href="index.html"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg><span>Головна</span></a>
-                <a href="settings.html"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg><span>Налаштування</span></a>
-                <a href="generator.html"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg><span>Генератор</span></a>
-                <a href="result.html"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg><span>Результат</span></a>
-                <a href="history.html"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="12 8 12 12 14 14"/><path d="M3.05 11a9 9 0 1 0 .5-3.5"/><polyline points="3 4 3 11 10 11"/></svg><span>Історія</span></a>
-                <a href="about.html"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg><span>Про нас</span></a>
-            </div>
-        </div>
+<header>
+    <h1>🎵 SoundMood</h1>
+    <p><em>Генератор саундтреків за настроєм</em></p>
+    <nav>
+        <ul>
+            <li><a href="index.html">Головна</a></li>
+            <li><a href="settings.html">Налаштування</a></li>
+            <li><a href="generator.html">Генератор</a></li>
+            <li><a href="result.html">Результат</a></li>
+            <li><a href="history.html">Історія</a></li>
+            <li><a href="about.html">Про нас</a></li>
+        </ul>
     </nav>
+</header>
 
-    <main class="main-content">
-        <div class="container" style="max-width:760px;">
+<hr/>
 
-            <div class="fade-up" style="margin-bottom:40px;">
-                <h1 class="page-title">Про проект</h1>
-                <p class="page-subtitle">SoundMood — генератор музики, що розуміє твій настрій</p>
-            </div>
+<main>
 
-            <!-- About -->
-            <div class="card fade-up fade-up-1" style="margin-bottom:20px;">
-                <h2 class="section-title">🎯 Місія</h2>
-                <p style="color:var(--text-second);line-height:1.8;font-size:0.95rem;">
-                    SoundMood — це вебсервіс, що дозволяє кожному створювати персоналізовану музику без будь-яких знань з музики чи нотного запису.
-                    Достатньо обрати кілька параметрів — і система згенерує унікальний саундтрек, ідеально підібраний до твого поточного настрою.
-                </p>
-            </div>
+    <h2>ℹ️ Про проект SoundMood</h2>
+    <p>
+        <strong>SoundMood</strong> — це навчальний вебпроект,
+        створений як генератор персоналізованої музики на основі настрою користувача.
+    </p>
 
-            <!-- Tech stack -->
-            <div class="card fade-up fade-up-2" style="margin-bottom:20px;">
-                <h2 class="section-title">🛠️ Технології</h2>
-                <div class="grid-2" style="gap:12px;margin-top:8px;">
-                    <div style="display:flex;align-items:center;gap:12px;padding:14px;background:var(--bg);border-radius:var(--radius);border:1px solid var(--border);">
-                        <span style="font-size:1.5rem;">🌐</span>
-                        <div><div style="font-weight:600;font-size:0.875rem;">HTML5</div><div style="font-size:0.78rem;color:var(--text-muted);">Семантична розмітка</div></div>
-                    </div>
-                    <div style="display:flex;align-items:center;gap:12px;padding:14px;background:var(--bg);border-radius:var(--radius);border:1px solid var(--border);">
-                        <span style="font-size:1.5rem;">🎨</span>
-                        <div><div style="font-weight:600;font-size:0.875rem;">CSS3</div><div style="font-size:0.78rem;color:var(--text-muted);">Анімації, змінні, flex/grid</div></div>
-                    </div>
-                    <div style="display:flex;align-items:center;gap:12px;padding:14px;background:var(--bg);border-radius:var(--radius);border:1px solid var(--border);">
-                        <span style="font-size:1.5rem;">⚡</span>
-                        <div><div style="font-weight:600;font-size:0.875rem;">JavaScript</div><div style="font-size:0.78rem;color:var(--text-muted);">Логіка, localStorage</div></div>
-                    </div>
-                    <div style="display:flex;align-items:center;gap:12px;padding:14px;background:var(--bg);border-radius:var(--radius);border:1px solid var(--border);">
-                        <span style="font-size:1.5rem;">🔤</span>
-                        <div><div style="font-weight:600;font-size:0.875rem;">Google Fonts</div><div style="font-size:0.78rem;color:var(--text-muted);">Syne + DM Sans</div></div>
-                    </div>
-                </div>
-            </div>
+    <hr/>
 
-            <!-- Features -->
-            <div class="card fade-up fade-up-2" style="margin-bottom:20px;">
-                <h2 class="section-title">✨ Можливості</h2>
-                <div style="display:flex;flex-direction:column;gap:12px;margin-top:8px;">
-                    <div style="display:flex;gap:12px;align-items:flex-start;">
-                        <span class="badge badge-green" style="flex-shrink:0;margin-top:2px;">✓</span>
-                        <div><div style="font-size:0.9rem;font-weight:500;">Генерація за настроєм</div><div style="font-size:0.8rem;color:var(--text-muted);">10+ варіантів настрою для точного підбору</div></div>
-                    </div>
-                    <div style="display:flex;gap:12px;align-items:flex-start;">
-                        <span class="badge badge-green" style="flex-shrink:0;margin-top:2px;">✓</span>
-                        <div><div style="font-size:0.9rem;font-weight:500;">Вибір жанру та інструментів</div><div style="font-size:0.8rem;color:var(--text-muted);">8 жанрів і 12 інструментів</div></div>
-                    </div>
-                    <div style="display:flex;gap:12px;align-items:flex-start;">
-                        <span class="badge badge-green" style="flex-shrink:0;margin-top:2px;">✓</span>
-                        <div><div style="font-size:0.9rem;font-weight:500;">Контроль темпу (BPM)</div><div style="font-size:0.8rem;color:var(--text-muted);">Від 40 до 200 ударів на хвилину</div></div>
-                    </div>
-                    <div style="display:flex;gap:12px;align-items:flex-start;">
-                        <span class="badge badge-green" style="flex-shrink:0;margin-top:2px;">✓</span>
-                        <div><div style="font-size:0.9rem;font-weight:500;">Збереження в localStorage</div><div style="font-size:0.8rem;color:var(--text-muted);">Вся генерація зберігається локально у браузері</div></div>
-                    </div>
-                    <div style="display:flex;gap:12px;align-items:flex-start;">
-                        <span class="badge badge-accent" style="flex-shrink:0;margin-top:2px;">⏳</span>
-                        <div><div style="font-size:0.9rem;font-weight:500;">Реальна генерація аудіо</div><div style="font-size:0.8rem;color:var(--text-muted);">Планується інтеграція з Web Audio API</div></div>
-                    </div>
-                </div>
-            </div>
+    <!-- Місія -->
+    <section>
+        <ol>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+        </ol>
+        <h3>🎯 Місія проекту</h3>
+        <p>
+            Ми віримо, що музика — це <strong>найкращий спосіб висловити емоції</strong>.
+            Але не кожен вміє грати на інструменті або знає нотну грамоту.
+        </p>
+        <p>
+            <em>SoundMood вирішує цю проблему:</em> достатньо обрати кілька параметрів —
+            і система згенерує унікальний саундтрек, ідеально підібраний до твого
+            поточного настрою. <strong>Без жодних музичних знань.</strong>
+        </p>
 
-            <!-- Pages -->
-            <div class="card fade-up fade-up-3" style="margin-bottom:28px;">
-                <h2 class="section-title">🗂️ Структура сайту</h2>
-                <div style="display:flex;flex-direction:column;gap:8px;margin-top:8px;">
-                    <a href="index.html" style="display:flex;justify-content:space-between;align-items:center;padding:10px 14px;background:var(--bg);border-radius:var(--radius);border:1px solid var(--border);transition:border-color var(--transition);" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--border)'">
-                        <span style="font-size:0.875rem;font-weight:500;">🏠 Головна</span>
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--text-muted)" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
-                    </a>
-                    <a href="settings.html" style="display:flex;justify-content:space-between;align-items:center;padding:10px 14px;background:var(--bg);border-radius:var(--radius);border:1px solid var(--border);transition:border-color var(--transition);" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--border)'">
-                        <span style="font-size:0.875rem;font-weight:500;">⚙️ Налаштування параметрів</span>
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--text-muted)" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
-                    </a>
-                    <a href="generator.html" style="display:flex;justify-content:space-between;align-items:center;padding:10px 14px;background:var(--bg);border-radius:var(--radius);border:1px solid var(--border);transition:border-color var(--transition);" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--border)'">
-                        <span style="font-size:0.875rem;font-weight:500;">▶️ Генератор саундтреку</span>
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--text-muted)" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
-                    </a>
-                    <a href="result.html" style="display:flex;justify-content:space-between;align-items:center;padding:10px 14px;background:var(--bg);border-radius:var(--radius);border:1px solid var(--border);transition:border-color var(--transition);" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--border)'">
-                        <span style="font-size:0.875rem;font-weight:500;">🎵 Сторінка результату</span>
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--text-muted)" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
-                    </a>
-                    <a href="history.html" style="display:flex;justify-content:space-between;align-items:center;padding:10px 14px;background:var(--bg);border-radius:var(--radius);border:1px solid var(--border);transition:border-color var(--transition);" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--border)'">
-                        <span style="font-size:0.875rem;font-weight:500;">🕐 Історія генерацій</span>
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--text-muted)" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
-                    </a>
-                </div>
-            </div>
+        <blockquote>
+            <p>«Музика виражає те, що неможливо сказати словами і що неможливо замовчати.»</p>
+            <footer>— <cite>Віктор Гюго</cite></footer>
+        </blockquote>
+    </section>
 
-            <div class="fade-up fade-up-4" style="text-align:center;">
-                <a href="generator.html" class="btn btn-primary btn-lg">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-                    Спробувати генератор
-                </a>
-            </div>
+    <hr/>
 
-        </div>
-    </main>
+    <!-- Технології -->
+    <section>
+        <h3>🛠️ Технічний стек</h3>
+        <p>Проект побудований на базових веб-технологіях:</p>
 
-    <footer><div class="container"><p>© 2025 SoundMood — Навчальний проект</p></div></footer>
-</div>
-<script src="js/main.js"></script>
+        <table border="1">
+            <thead>
+            <tr>
+                <th>Технологія</th>
+                <th>Призначення</th>
+                <th>Версія</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td><strong>HTML5</strong></td>
+                <td>Семантична структура сторінок</td>
+                <td>5.0</td>
+            </tr>
+            <tr>
+                <td><strong>CSS3</strong></td>
+                <td>Стилізація, анімації, flex/grid</td>
+                <td>3.0</td>
+            </tr>
+            <tr>
+                <td><strong>JavaScript</strong></td>
+                <td>Логіка, взаємодія, localStorage</td>
+                <td>ES6+</td>
+            </tr>
+            <tr>
+                <td><strong>Google Fonts</strong></td>
+                <td>Шрифти Syne та DM Sans</td>
+                <td>—</td>
+            </tr>
+            <tr>
+                <td><strong>Web Audio API</strong></td>
+                <td>Генерація аудіо (планується)</td>
+                <td>—</td>
+            </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <hr/>
+
+    <!-- Можливості -->
+    <section>
+        <h3>✨ Можливості сервісу</h3>
+
+        <h4>Реалізовано:</h4>
+        <ul>
+            <li>✅ Вибір настрою — <strong>10+ варіантів</strong></li>
+            <li>✅ Вибір музичного жанру — <strong>10 жанрів</strong></li>
+            <li>✅ Налаштування темпу від <strong>40 до 200 BPM</strong></li>
+            <li>✅ Вибір інструментів — <strong>12 варіантів</strong></li>
+            <li>✅ Налаштування тривалості від <strong>1 до 10 хвилин</strong></li>
+            <li>✅ Збереження результатів у <code>localStorage</code></li>
+            <li>✅ Перегляд та фільтрація <strong>історії генерацій</strong></li>
+            <li>✅ Система оцінок треків</li>
+        </ul>
+
+        <h4>Планується:</h4>
+        <ul>
+            <li>⏳ Реальна генерація аудіо через <abbr title="Web Audio API">WAA</abbr></li>
+            <li>⏳ Завантаження треку у форматі <strong>MP3</strong></li>
+            <li>⏳ Авторизація та хмарне збереження</li>
+            <li>⏳ Поділитись треком у соцмережах</li>
+            <li>⏳ Мобільний додаток</li>
+        </ul>
+    </section>
+
+    <hr/>
+
+    <!-- Відео -->
+    <section>
+        <h3>🎬 Відео про AI та музику</h3>
+        <p>
+            Подивіться це відео, щоб краще зрозуміти, як штучний інтелект
+            використовується у <strong>сучасній музичній індустрії</strong>:
+        </p>
+
+        <iframe
+                width="560"
+                height="315"
+                src="https://www.youtube.com/embed/89yDiQ8WkNg?si=QuWkalCaR1E6Y22K"
+                title="AI та музика"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen>
+        </iframe>
+
+        <p><small>Відео надано YouTube. Для перегляду може знадобитися підключення до інтернету.</small></p>
+    </section>
+
+    <hr/>
+
+    <!-- Структура сайту -->
+    <section>
+        <h3>🗂️ Структура сайту</h3>
+        <p>Проект містить <strong>6 сторінок</strong>:</p>
+
+        <table border="1">
+            <thead>
+            <tr>
+                <th>Сторінка</th>
+                <th>Файл</th>
+                <th>Опис</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td><a href="index.html">🏠 Головна</a></td>
+                <td><code>index.html</code></td>
+                <td>Стартова сторінка, опис, жанри, відео</td>
+            </tr>
+            <tr>
+                <td><a href="settings.html">⚙️ Налаштування</a></td>
+                <td><code>settings.html</code></td>
+                <td>Параметри генерації за замовчуванням</td>
+            </tr>
+            <tr>
+                <td><a href="generator.html">▶ Генератор</a></td>
+                <td><code>generator.html</code></td>
+                <td>Вибір параметрів і запуск генерації</td>
+            </tr>
+            <tr>
+                <td><a href="result.html">🎶 Результат</a></td>
+                <td><code>result.html</code></td>
+                <td>Перегляд і прослуховування треку</td>
+            </tr>
+            <tr>
+                <td><a href="history.html">🕐 Історія</a></td>
+                <td><code>history.html</code></td>
+                <td>Всі раніше згенеровані саундтреки</td>
+            </tr>
+            <tr>
+                <td><a href="about.html">ℹ️ Про нас</a></td>
+                <td><code>about.html</code></td>
+                <td>Інформація про проект і технології</td>
+            </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <hr/>
+
+    <!-- Контакти -->
+    <section>
+        <h3>📬 Зворотний зв'язок</h3>
+        <p>Маєш питання або пропозиції? Заповни форму нижче:</p>
+
+        <form action="#">
+            <p>
+                <label for="contact-name">Ім'я:</label><br/>
+                <input type="text" id="contact-name" name="name" placeholder="Твоє ім'я"/>
+            </p>
+            <p>
+                <label for="contact-email">Email:</label><br/>
+                <input type="email" id="contact-email" name="email" placeholder="your@email.com"/>
+            </p>
+            <p>
+                <label for="contact-type">Тип повідомлення:</label>
+                <select id="contact-type" name="type">
+                    <option value="question">Питання</option>
+                    <option value="bug">Помилка на сайті</option>
+                    <option value="suggestion">Пропозиція</option>
+                    <option value="other">Інше</option>
+                </select>
+            </p>
+            <p>
+                <label for="contact-msg">Повідомлення:</label><br/>
+                <textarea id="contact-msg" name="message" rows="4" cols="45"
+                          placeholder="Напиши своє повідомлення тут..."></textarea>
+            </p>
+            <button type="reset">Очистити</button>
+            <button type="submit">📨 Надіслати</button>
+        </form>
+    </section>
+
+    <hr/>
+
+    <p>
+        <a href="generator.html"><button>▶ Спробувати генератор</button></a>
+    </p>
+
+</main>
+
+<hr/>
+
+<footer>
+    <p>© 2025 <strong>SoundMood</strong> — Генератор саундтреків за настроєм</p>
+    <p><small>Навчальний проект · Версія 1.0 Beta</small></p>
+</footer>
+
 </body>
 </html>

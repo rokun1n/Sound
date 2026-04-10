@@ -4,147 +4,208 @@
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Налаштування — SoundMood</title>
-    <link rel="stylesheet" href="css/style.css"/>
 </head>
 <body>
-<div class="page-wrapper">
 
-    <nav class="navbar">
-        <div class="container">
-            <a href="index.html" class="nav-logo">
-                <div class="logo-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg></div>
-                SoundMood
-            </a>
-            <div class="nav-links">
-                <a href="index.html"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg><span>Головна</span></a>
-                <a href="settings.html"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg><span>Налаштування</span></a>
-                <a href="generator.html"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg><span>Генератор</span></a>
-                <a href="result.html"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg><span>Результат</span></a>
-                <a href="history.html"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="12 8 12 12 14 14"/><path d="M3.05 11a9 9 0 1 0 .5-3.5"/><polyline points="3 4 3 11 10 11"/></svg><span>Історія</span></a>
-                <a href="about.html"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg><span>Про нас</span></a>
-            </div>
-        </div>
+<header>
+    <h1>🎵 SoundMood</h1>
+    <p><em>Генератор саундтреків за настроєм</em></p>
+    <nav>
+        <ul>
+            <li><a href="index.html">Головна</a></li>
+            <li><a href="settings.html">Налаштування</a></li>
+            <li><a href="generator.html">Генератор</a></li>
+            <li><a href="result.html">Результат</a></li>
+            <li><a href="history.html">Історія</a></li>
+            <li><a href="about.html">Про нас</a></li>
+        </ul>
     </nav>
+</header>
 
-    <main class="main-content">
-        <div class="container" style="max-width:760px;">
+<hr/>
 
-            <div class="fade-up" style="margin-bottom:36px;">
-                <h1 class="page-title">Налаштування</h1>
-                <p class="page-subtitle">Налаштуй параметри за замовчуванням для генерації саундтреків</p>
-            </div>
+<main>
 
-            <!-- Mood -->
-            <div class="card fade-up fade-up-1" style="margin-bottom:20px;">
-                <h2 class="section-title">🎭 Настрій</h2>
-                <p class="label">Обери один або кілька настроїв</p>
-                <div class="chip-group">
-                    <div class="chip selected">😊 Радісний</div>
-                    <div class="chip">😔 Сумний</div>
-                    <div class="chip">😤 Енергійний</div>
-                    <div class="chip">😌 Спокійний</div>
-                    <div class="chip">😮 Драматичний</div>
-                    <div class="chip">🤩 Надихаючий</div>
-                    <div class="chip">😴 Розслаблений</div>
-                    <div class="chip">😰 Напружений</div>
-                    <div class="chip">🤔 Задумливий</div>
-                    <div class="chip">🥳 Святковий</div>
-                </div>
-            </div>
+    <h2>⚙️ Налаштування</h2>
+    <p>
+        На цій сторінці ти можеш налаштувати <strong>параметри за замовчуванням</strong>,
+        які будуть підставлятися у генератор при кожному новому запуску.
+    </p>
 
-            <!-- Genre -->
-            <div class="card fade-up fade-up-2" style="margin-bottom:20px;">
-                <h2 class="section-title">🎵 Жанр</h2>
-                <div class="form-group" style="margin-bottom:0;">
-                    <p class="label">Основний жанр</p>
-                    <select class="form-control">
-                        <option>Ambient</option>
-                        <option>Electronic</option>
-                        <option>Jazz</option>
-                        <option>Classical</option>
-                        <option>Rock</option>
-                        <option>Lo-Fi</option>
-                        <option>Cinematic</option>
-                        <option>Pop</option>
-                        <option>R&B</option>
-                        <option>Folk</option>
-                    </select>
-                </div>
-            </div>
+    <details>
+        <summary><strong>Що означають ці налаштування?</strong></summary>
+        <p>
+            Параметри за замовчуванням — це значення, з яких починається кожна нова генерація.
+            Ти завжди можеш змінити їх безпосередньо на сторінці
+            <a href="generator.html">Генератора</a> перед запуском.
+        </p>
+    </details>
 
-            <!-- BPM -->
-            <div class="card fade-up fade-up-2" style="margin-bottom:20px;">
-                <h2 class="section-title">🥁 Темп (BPM)</h2>
-                <p class="label">Поточне значення: <span class="range-value" id="bpmDisplay">90</span> BPM</p>
-                <div class="range-wrap">
-                    <input type="range" min="40" max="200" value="90" id="bpmRange"/>
-                    <div class="range-labels"><span>40 — Повільно</span><span>200 — Швидко</span></div>
-                </div>
-                <div style="display:flex;gap:8px;margin-top:16px;flex-wrap:wrap;">
-                    <button class="chip" onclick="setBPM(60)">60 — Повільно</button>
-                    <button class="chip" onclick="setBPM(90)">90 — Помірно</button>
-                    <button class="chip" onclick="setBPM(120)">120 — Жваво</button>
-                    <button class="chip" onclick="setBPM(160)">160 — Швидко</button>
-                </div>
-            </div>
+    <hr/>
 
-            <!-- Instruments -->
-            <div class="card fade-up fade-up-3" style="margin-bottom:20px;">
-                <h2 class="section-title">🎸 Інструменти</h2>
-                <p class="label">Обери інструменти (до 5)</p>
-                <div class="chip-group">
-                    <div class="chip selected">🎹 Піаніно</div>
-                    <div class="chip">🎸 Гітара</div>
-                    <div class="chip selected">🥁 Барабани</div>
-                    <div class="chip">🎻 Скрипка</div>
-                    <div class="chip">🎺 Труба</div>
-                    <div class="chip">🎷 Саксофон</div>
-                    <div class="chip">🪗 Акордеон</div>
-                    <div class="chip">🎵 Синтезатор</div>
-                    <div class="chip">🎙️ Вокал</div>
-                    <div class="chip">🪕 Бас-гітара</div>
-                    <div class="chip">🎻 Віолончель</div>
-                    <div class="chip">🪘 Перкусія</div>
-                </div>
-            </div>
+    <form action="#">
 
-            <!-- Duration -->
-            <div class="card fade-up fade-up-3" style="margin-bottom:20px;">
-                <h2 class="section-title">⏱️ Тривалість</h2>
-                <p class="label">Довжина треку: <span class="range-value" id="durDisplay">2</span> хв</p>
-                <div class="range-wrap">
-                    <input type="range" min="1" max="10" value="2" id="durRange"/>
-                    <div class="range-labels"><span>1 хв</span><span>10 хв</span></div>
-                </div>
-            </div>
+        <!-- Настрій -->
+        <fieldset>
+            <legend><strong>🎭 Настрій</strong></legend>
+            <p>Обери один або кілька настроїв, які відповідають твоєму стану:</p>
 
-            <!-- Save -->
-            <div class="fade-up fade-up-4" style="display:flex;gap:12px;justify-content:flex-end;flex-wrap:wrap;">
-                <button class="btn btn-ghost" onclick="resetSettings()">Скинути</button>
-                <button class="btn btn-primary" onclick="saveSettings()">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
-                    Зберегти налаштування
-                </button>
-            </div>
+            <p>
+                <label><input type="checkbox" name="mood" value="happy" checked> 😊 <strong>Радісний</strong> — легка, весела музика</label><br/>
+                <label><input type="checkbox" name="mood" value="sad"> 😔 <strong>Сумний</strong> — меланхолійні мелодії</label><br/>
+                <label><input type="checkbox" name="mood" value="energetic"> 😤 <strong>Енергійний</strong> — драйвова та потужна музика</label><br/>
+                <label><input type="checkbox" name="mood" value="calm"> 😌 <strong>Спокійний</strong> — розслаблюючий фон</label><br/>
+                <label><input type="checkbox" name="mood" value="dramatic"> 😮 <strong>Драматичний</strong> — насичені емоції та контрасти</label><br/>
+                <label><input type="checkbox" name="mood" value="inspiring"> 🤩 <strong>Надихаючий</strong> — піднімає настрій і мотивує</label><br/>
+                <label><input type="checkbox" name="mood" value="relaxed"> 😴 <strong>Розслаблений</strong> — м'який і ненав'язливий звук</label><br/>
+                <label><input type="checkbox" name="mood" value="tense"> 😰 <strong>Напружений</strong> — гострий та інтенсивний</label><br/>
+                <label><input type="checkbox" name="mood" value="thoughtful"> 🤔 <strong>Задумливий</strong> — глибокий і атмосферний</label><br/>
+                <label><input type="checkbox" name="mood" value="festive"> 🥳 <strong>Святковий</strong> — яскравий та урочистий</label>
+            </p>
+        </fieldset>
 
-        </div>
-    </main>
+        <br/>
 
-    <footer><div class="container"><p>© 2025 SoundMood</p></div></footer>
-</div>
+        <!-- Жанр -->
+        <fieldset>
+            <legend><strong>🎵 Жанр</strong></legend>
+            <p>Обери основний музичний жанр для генерації:</p>
 
-<div class="toast"></div>
-<script src="js/main.js"></script>
-<script>
-    const bpmRange = document.getElementById('bpmRange');
-    const bpmDisplay = document.getElementById('bpmDisplay');
-    const durRange = document.getElementById('durRange');
-    const durDisplay = document.getElementById('durDisplay');
-    bpmRange.addEventListener('input', () => bpmDisplay.textContent = bpmRange.value);
-    durRange.addEventListener('input', () => durDisplay.textContent = durRange.value);
-    function setBPM(v) { bpmRange.value = v; bpmDisplay.textContent = v; }
-    function saveSettings() { showToast('Налаштування збережено!', '✓'); }
-    function resetSettings() { bpmRange.value = 90; bpmDisplay.textContent = 90; durRange.value = 2; durDisplay.textContent = 2; showToast('Налаштування скинуто', '↺'); }
-</script>
+            <label for="genre">Жанр:</label>
+            <select id="genre" name="genre">
+                <optgroup label="Електронна музика">
+                    <option value="ambient">Ambient — атмосферний і спокійний</option>
+                    <option value="electronic">Electronic — енергійний і ритмічний</option>
+                    <option value="lofi">Lo-Fi — затишний і ностальгічний</option>
+                </optgroup>
+                <optgroup label="Жива музика">
+                    <option value="jazz">Jazz — витончений і імпровізаційний</option>
+                    <option value="classical">Classical — урочистий і класичний</option>
+                    <option value="rock">Rock — потужний і драйвовий</option>
+                    <option value="folk">Folk — народний і природній</option>
+                </optgroup>
+                <optgroup label="Сучасна музика">
+                    <option value="cinematic">Cinematic — епічний і кінематографічний</option>
+                    <option value="pop">Pop — легкий і мелодійний</option>
+                    <option value="rnb">R&amp;B — душевний і ритмічний</option>
+                </optgroup>
+            </select>
+        </fieldset>
+
+        <br/>
+
+        <!-- Темп BPM -->
+        <fieldset>
+            <legend><strong>🥁 Темп (BPM)</strong></legend>
+            <p>
+                <abbr title="Beats Per Minute — удари на хвилину">BPM</abbr> визначає
+                швидкість музики. Чим вище значення — тим швидша і енергійніша мелодія.
+            </p>
+
+            <label for="bpm">Поточне значення BPM:</label>
+            <input type="number" id="bpm" name="bpm" min="40" max="200" value="90"/>
+            <input type="range" name="bpm_range" min="40" max="200" value="90"/>
+            <p><small>Діапазон: від <strong>40</strong> (дуже повільно) до <strong>200</strong> (дуже швидко)</small></p>
+
+            <p>Швидкі пресети:</p>
+            <p>
+                <label><input type="radio" name="bpm_preset" value="60"> <strong>60 BPM</strong> — Повільно (балади, медитація)</label><br/>
+                <label><input type="radio" name="bpm_preset" value="90"> <strong>90 BPM</strong> — Помірно (Lo-Fi, Jazz)</label><br/>
+                <label><input type="radio" name="bpm_preset" value="120"> <strong>120 BPM</strong> — Жваво (Pop, Rock)</label><br/>
+                <label><input type="radio" name="bpm_preset" value="160"> <strong>160 BPM</strong> — Швидко (Electronic, Dance)</label>
+            </p>
+        </fieldset>
+
+        <br/>
+
+        <!-- Інструменти -->
+        <fieldset>
+            <legend><strong>🎸 Інструменти</strong></legend>
+            <p>Обери до <strong>5 інструментів</strong>, які будуть задіяні у треку:</p>
+
+            <p>
+                <label><input type="checkbox" name="instruments" value="piano" checked> 🎹 <strong>Піаніно</strong></label><br/>
+                <label><input type="checkbox" name="instruments" value="guitar"> 🎸 Гітара</label><br/>
+                <label><input type="checkbox" name="instruments" value="drums" checked> 🥁 <strong>Барабани</strong></label><br/>
+                <label><input type="checkbox" name="instruments" value="violin"> 🎻 Скрипка</label><br/>
+                <label><input type="checkbox" name="instruments" value="trumpet"> 🎺 Труба</label><br/>
+                <label><input type="checkbox" name="instruments" value="saxophone"> 🎷 Саксофон</label><br/>
+                <label><input type="checkbox" name="instruments" value="accordion"> 🪗 Акордеон</label><br/>
+                <label><input type="checkbox" name="instruments" value="synth"> 🎹 Синтезатор</label><br/>
+                <label><input type="checkbox" name="instruments" value="vocal"> 🎙️ Вокал</label><br/>
+                <label><input type="checkbox" name="instruments" value="bass"> 🪕 Бас-гітара</label><br/>
+                <label><input type="checkbox" name="instruments" value="cello"> 🎻 Віолончель</label><br/>
+                <label><input type="checkbox" name="instruments" value="percussion"> 🪘 Перкусія</label>
+            </p>
+        </fieldset>
+
+        <br/>
+
+        <!-- Тривалість -->
+        <fieldset>
+            <legend><strong>⏱️ Тривалість</strong></legend>
+            <p>Вкажи бажану довжину згенерованого треку:</p>
+
+            <label for="duration">Тривалість (хвилини):</label>
+            <input type="number" id="duration" name="duration" min="1" max="10" value="2"/>
+            <input type="range" name="duration_range" min="1" max="10" value="2"/>
+            <p><small>Від <strong>1</strong> до <strong>10</strong> хвилин</small></p>
+        </fieldset>
+
+        <br/>
+
+        <!-- Додаткові опції -->
+        <fieldset>
+            <legend><strong>🔧 Додаткові опції</strong></legend>
+
+            <p>
+                <label>
+                    <input type="checkbox" name="fade_in" value="1" checked>
+                    Плавне <strong>fade in</strong> на початку треку
+                </label>
+            </p>
+            <p>
+                <label>
+                    <input type="checkbox" name="fade_out" value="1" checked>
+                    Плавне <strong>fade out</strong> в кінці треку
+                </label>
+            </p>
+            <p>
+                <label>
+                    <input type="checkbox" name="auto_save" value="1">
+                    Автоматично зберігати кожен результат в <em>Історію</em>
+                </label>
+            </p>
+
+            <p>
+                <label for="track_name">Назва за замовчуванням:</label><br/>
+                <input type="text" id="track_name" name="track_name" placeholder="Наприклад: Мій саундтрек" maxlength="50"/>
+            </p>
+
+            <p>
+                <label for="notes">Нотатки / коментар:</label><br/>
+                <textarea id="notes" name="notes" rows="3" cols="40" placeholder="Додай нотатку до налаштувань..."></textarea>
+            </p>
+        </fieldset>
+
+        <br/>
+
+        <!-- Кнопки -->
+        <p>
+            <button type="reset">↺ Скинути до початкових</button>
+            <button type="submit">💾 Зберегти налаштування</button>
+        </p>
+
+    </form>
+
+</main>
+
+<hr/>
+
+<footer>
+    <p>© 2025 <strong>SoundMood</strong> — Генератор саундтреків за настроєм</p>
+    <p><small>Навчальний проект · Версія 1.0 Beta</small></p>
+</footer>
+
 </body>
 </html>
