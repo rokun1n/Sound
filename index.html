@@ -4,7 +4,7 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>SoundMood — Генератор саундтреків</title>
-  <link rel="stylesheet" href="style.css"/>
+  <link rel="stylesheet" href="css/style.css"/>
 </head>
 <body>
 
@@ -23,10 +23,9 @@
   </nav>
 </header>
 
-<hr/>
-
 <main>
 
+  <!-- Герой секція -->
   <section>
     <h2>Музика під твій настрій</h2>
     <p>
@@ -34,54 +33,53 @@
       <strong>настрій</strong> та <strong>інструменти</strong> —
       і отримай унікальний саундтрек за секунди.
     </p>
-    <p>
-      <a href="generator.html"><button>▶ Почати генерацію</button></a>
 
-      <a href="about.html"><button>Дізнатися більше</button></a>
-      <a href="about.html" class="btn btn-grow">Дізнатися більше</a>
+    <div class="highlight">
+      🎉 SoundMood Beta — безкоштовно для всіх! Спробуй прямо зараз.
+    </div>
+
+    <p>
+      <a href="generator.html" class="btn">▶ Почати генерацію</a>
+      <a href="about.html" class="btn">Дізнатися більше</a>
     </p>
   </section>
 
   <hr/>
 
-  <div class="row-3">
-
-    <div>
+  <!-- Як це працює -->
   <section>
     <h2>Як це працює</h2>
     <p>Всього три прості кроки відділяють тебе від власного саундтреку:</p>
 
-    <ol>
-      <li>
-        <h3>Налаштуй параметри</h3>
-        <p>
-          Обери <strong>жанр</strong> (Ambient, Jazz, Rock тощо),
-          вкажи <strong>темп</strong> у BPM,
-          обери <strong>настрій</strong> та бажані <strong>інструменти</strong>.
-        </p>
-      </li>
-      <li>
-        <h3>Запусти генерацію</h3>
-        <p>
-          Натисни кнопку і система <em>автоматично</em> побудує структуру,
-          мелодію та зведе всі інструменти разом.
-        </p>
-      </li>
-      <li>
-        <h3>Збережи результат</h3>
-        <p>
-          Прослухай готовий трек, оціни його, завантаж або
-          збережи в <strong>особисту історію</strong>.
-        </p>
-      </li>
-    </ol>
+    <div class="card">
+      <h3>1. Налаштуй параметри</h3>
+      <p>
+        Обери <strong>жанр</strong> (Ambient, Jazz, Rock тощо),
+        вкажи <strong>темп</strong> у BPM,
+        обери <strong>настрій</strong> та бажані <strong>інструменти</strong>.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>2. Запусти генерацію</h3>
+      <p>
+        Натисни кнопку і система <em>автоматично</em> побудує структуру,
+        мелодію та зведе всі інструменти разом.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>3. Збережи результат</h3>
+      <p>
+        Прослухай готовий трек, оціни його, завантаж або
+        збережи в <strong>особисту історію</strong>.
+      </p>
+    </div>
   </section>
-  </div>
 
   <hr/>
 
   <!-- Доступні жанри -->
-    <div>
   <section>
     <h2>Доступні жанри</h2>
     <p>На сьогодні SoundMood підтримує <strong>8 музичних жанрів</strong>:</p>
@@ -147,14 +145,11 @@
       </tbody>
     </table>
   </section>
-    </div>
 
   <hr/>
 
   <!-- Відео -->
-    <div>
   <section>
-
     <h2>Дивись як це працює</h2>
     <p>
       Перегляньте коротке відео про те, як штучний інтелект
@@ -170,11 +165,8 @@
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             allowfullscreen>
     </iframe>
-
   </section>
-    </div>
 
-  </div>
   <hr/>
 
   <!-- Переваги -->
@@ -190,48 +182,40 @@
       <li>Підтримка мобільних пристроїв</li>
     </ul>
 
-    <h3>⚠️ Обмеження (поточна версія)</h3>
-    <ul>
-      <li>Генерація аудіо поки що <em>симульована</em> — реальний звук у розробці</li>
-      <li>Максимальна тривалість треку — <strong>10 хвилин</strong></li>
-      <li>Зберігається не більше <strong>50 треків</strong> в історії</li>
-    </ul>
+    <h3>⚠️ Обмеження</h3>
+    <div class="warning">
+      Генерація аудіо поки що симульована — реальний звук у розробці.
+      Максимальна тривалість треку — 10 хвилин.
+      Зберігається не більше 50 треків в історії.
+    </div>
   </section>
 
   <hr/>
 
-  <!-- Цитата -->
+  <!-- Цитати -->
   <section>
     <h2>Що кажуть користувачі</h2>
 
     <blockquote>
-      <p>
-        «SoundMood допомагає мені налаштуватися на роботу щоранку.
-        Lo-Fi на 80 BPM — ідеальне поєднання для продуктивності!»
-      </p>
+      <p>«SoundMood допомагає мені налаштуватися на роботу щоранку.
+        Lo-Fi на 80 BPM — ідеальне поєднання для продуктивності!»</p>
       <footer>— <cite>Олена К., дизайнер</cite></footer>
     </blockquote>
 
     <blockquote>
-      <p>
-        «Дуже зручно, що можна обрати настрій і жанр окремо.
-        Cinematic + Драматичний = ідеальний фон для написання коду 😄»
-      </p>
+      <p>«Дуже зручно, що можна обрати настрій і жанр окремо.
+        Cinematic + Драматичний = ідеальний фон для написання коду 😄»</p>
       <footer>— <cite>Максим Р., розробник</cite></footer>
     </blockquote>
   </section>
 
-
-
-
 </main>
-
-<hr/>
 
 <footer>
   <p>© 2026 <strong>SoundMood</strong> — Генератор саундтреків за настроєм</p>
   <p><small>Навчальний проект · Версія 1.0 Beta</small></p>
 </footer>
 
+<script src="script.js"></script>
 </body>
 </html>

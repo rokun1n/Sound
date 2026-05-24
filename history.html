@@ -4,7 +4,7 @@
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Історія — SoundMood</title>
-    <link rel="stylesheet" href="style.css"/>
+    <link rel="stylesheet" href="css/style.css"/>
 </head>
 <body>
 
@@ -36,7 +36,7 @@
     <hr/>
 
     <!-- Статистика -->
-    <section>
+    <section class="card">
         <h3>📊 Статистика</h3>
 
         <table border="1">
@@ -86,7 +86,7 @@
                 <label for="search">Пошук по назві або настрою:</label><br/>
                 <input type="search" id="search" name="search"
                        placeholder="Введи назву або настрій..."/>
-                <button type="submit">Знайти</button>
+                <button type="submit" class="btn">Знайти</button>
             </p>
 
             <p>
@@ -114,8 +114,8 @@
                     <option value="thoughtful">Задумливий</option>
                 </select>
 
-                <button type="submit">Застосувати</button>
-                <button type="reset">Скинути фільтри</button>
+                <button type="submit" class="btn">Застосувати</button>
+                <button type="reset" class="btn">Скинути фільтри</button>
             </p>
         </form>
     </section>
@@ -123,9 +123,9 @@
     <hr/>
 
     <!-- Список треків -->
-    <section>
+    <section class="card">
         <h3>🎵 Список треків</h3>
-        <p>Знайдено треків: <strong>5</strong></p>
+        <p>Знайдено треків: <span class="badge">5</span></p>
 
         <table border="1">
             <thead>
@@ -238,8 +238,8 @@
         </ul>
 
         <p>
-            <button type="button">🗑 Очистити всю історію</button>
-            <a href="generator.html"><button type="button">+ Створити новий трек</button></a>
+            <button type="button" class="btn">🗑 Очистити всю історію</button>
+            <a href="generator.html" class="btn">+ Створити новий трек</a>
         </p>
     </section>
 
@@ -248,9 +248,10 @@
 <hr/>
 
 <footer>
-    <p>© 2026 <strong>SoundMood</strong> — Генератор саундтреків за настроєм</p>
+    <p>© 2025 <strong>SoundMood</strong> — Генератор саундтреків за настроєм</p>
     <p><small>Навчальний проект · Версія 1.0 Beta</small></p>
 </footer>
 
+<script src="script.js"></script>
 </body>
 </html>

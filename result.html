@@ -4,7 +4,7 @@
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Результат — SoundMood</title>
-    <link rel="stylesheet" href="style.css"/>
+    <link rel="stylesheet" href="css/style.css"/>
 </head>
 <body>
 
@@ -53,16 +53,16 @@
         </audio>
 
         <p>
-            <button type="button">📤 Поділитись</button>
-            <button type="button">⬇ Завантажити</button>
-            <button type="button">💾 Зберегти в історію</button>
+            <button type="button" class="btn">📤 Поділитись</button>
+            <button type="button" class="btn">⬇ Завантажити</button>
+            <button type="button" class="btn">💾 Зберегти в історію</button>
         </p>
     </section>
 
     <hr/>
 
     <!-- Деталі треку -->
-    <section>
+    <section class="card">
         <h3>📋 Деталі треку</h3>
         <p>Повна інформація про параметри, що були використані для генерації:</p>
 
@@ -117,7 +117,7 @@
     <hr/>
 
     <!-- Оцінка -->
-    <section>
+    <section class="card">
         <h3>⭐ Оцінити результат</h3>
         <p>Наскільки цей саундтрек відповідає твоєму настрою? Залиш оцінку:</p>
 
@@ -140,14 +140,14 @@
             </fieldset>
 
             <br/>
-            <button type="submit">Надіслати оцінку</button>
+            <button type="submit" class="btn">Надіслати оцінку</button>
         </form>
     </section>
 
     <hr/>
 
     <!-- Схожі рекомендації -->
-    <section>
+    <section class="card">
         <h3>🔁 Схожі варіанти для генерації</h3>
         <p>На основі твоїх параметрів ми рекомендуємо спробувати:</p>
 
@@ -164,9 +164,9 @@
     <section>
         <h3>Що далі?</h3>
         <p>
-            <a href="generator.html"><button type="button">↺ Генерувати ще раз</button></a>
-            <a href="history.html"><button type="button">📂 Перейти до Історії</button></a>
-            <a href="settings.html"><button type="button">⚙️ Налаштування</button></a>
+            <a href="generator.html" class="btn">↺ Генерувати ще раз</a>
+            <a href="history.html" class="btn">📂 Перейти до Історії</a>
+            <a href="settings.html" class="btn">⚙️ Налаштування</a>
         </p>
     </section>
 
@@ -175,9 +175,10 @@
 <hr/>
 
 <footer>
-    <p>© 2026 <strong>SoundMood</strong> — Генератор саундтреків за настроєм</p>
+    <p>© 2025 <strong>SoundMood</strong> — Генератор саундтреків за настроєм</p>
     <p><small>Навчальний проект · Версія 1.0 Beta</small></p>
 </footer>
 
+<script src="script.js"></script>
 </body>
 </html>
