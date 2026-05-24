@@ -120,9 +120,7 @@ hr {
     margin: 28px 0;
 }
 
-/* ------------------------------------------------
-   HEADER
-   ------------------------------------------------ */
+
 
 header {
     background-color: #2c2c6c;
@@ -176,9 +174,7 @@ nav ul li a:active {
     background-color: #4a42cc;  /* зміна кольору при натисканні */
 }
 
-/* ------------------------------------------------
-   MAIN / FOOTER
-   ------------------------------------------------ */
+
 
 main {
     max-width: 960px;
@@ -202,11 +198,7 @@ footer p {
     color: #c0bfff;
 }
 
-/* ================================================
-   КЛАСИ (не менше 3 класів, всього 10+ властивостей)
-   ================================================ */
 
-/* --- Клас 1: .btn — стиль кнопок --- */
 .btn {
     display: inline-block;        /* 1 */
     padding: 9px 20px;            /* 2 */
@@ -217,11 +209,13 @@ footer p {
     font-size: 0.95em;            /* 7 */
     cursor: pointer;              /* 8 */
     text-decoration: none;
-    transition: background-color 0.2s;
+    transition: background-color 0.2s, transform 0.2s;
 }
 
 .btn:hover {
     background-color: #4a42cc;
+    transform: scale(1.3);
+    transition: transform 0.2s;
 }
 
 .highlight {
@@ -336,3 +330,5 @@ button[type="reset"]:hover {
         width: 100%;
     }
 }
+
+
