@@ -1,7 +1,15 @@
-// ================================================
+﻿// ================================================
 //  SoundMood — script.js
 //  Практична робота №4: Основи JavaScript
 // ================================================
+
+// Застосовуємо збережену тему одразу, щоб не було миготіння
+(function() {
+    var saved = localStorage.getItem('soundmood-theme');
+    if (saved && saved !== 'sakura') {
+        document.documentElement.setAttribute('data-theme', saved);
+    }
+}());
 
 
 // ------------------------------------------------
@@ -24,8 +32,7 @@ function markActiveNav() {
         var link = navLinks[i];
         // Якщо href посилання збігається з поточною сторінкою
         if (link.getAttribute('href') === currentPage) {
-            link.style.backgroundColor = '#6c63ff'; // фіолетовий фон
-            link.style.fontWeight = 'bold';          // жирний текст
+            link.classList.add('nav-active');
         }
     }
 }
@@ -44,7 +51,7 @@ function initBpmConverter() {
     // Створюємо блок підказки
     var hint = document.createElement('p');
     hint.id = 'bpm-hint';
-    hint.style.color = '#6c63ff';
+    hint.style.color = getCssVar('--color-accent');
     hint.style.fontWeight = 'bold';
     hint.style.marginTop = '6px';
 
@@ -210,16 +217,18 @@ function initGeneratorAnimation() {
     progressBlock.style.display = 'none';  // прихований спочатку
     progressBlock.style.marginTop = '16px';
     progressBlock.style.padding = '16px';
-    progressBlock.style.backgroundColor = '#f0efff';
+    progressBlock.style.backgroundColor = getCssVar('--color-light-bg');
     progressBlock.style.borderRadius = '8px';
-    progressBlock.style.border = '1px solid #6c63ff';
+    progressBlock.style.border = '1px solid ' + getCssVar('--color-accent');
 
+    var accent = getCssVar('--color-accent');
+    var primary = getCssVar('--color-primary');
     progressBlock.innerHTML =
-        '<p id="progress-status" style="font-weight:bold; color:#2c2c6c; margin-bottom:10px;">🎵 Генерація...</p>' +
+        '<p id="progress-status" style="font-weight:bold; color:' + primary + '; margin-bottom:10px;">🎵 Генерація...</p>' +
         '<div style="background:#dddddd; border-radius:99px; height:8px; overflow:hidden;">' +
-        '<div id="progress-fill" style="height:100%; width:0%; background:#6c63ff; border-radius:99px; transition:width 0.4s;"></div>' +
+        '<div id="progress-fill" style="height:100%; width:0%; background:' + accent + '; border-radius:99px; transition:width 0.4s;"></div>' +
         '</div>' +
-        '<p id="progress-percent" style="font-size:0.85em; color:#6c63ff; margin-top:6px;">0%</p>';
+        '<p id="progress-percent" style="font-size:0.85em; color:' + accent + '; margin-top:6px;">0%</p>';
 
     // Вставляємо блок після кнопки
     submitBtn.parentNode.insertBefore(progressBlock, submitBtn.nextSibling);
@@ -285,7 +294,7 @@ function showToast(message) {
     toast.textContent = message;
     toast.style.cssText =
         'position:fixed; bottom:24px; right:24px;' +
-        'background:#2c2c6c; color:#ffffff;' +
+        'background:' + getCssVar('--color-primary') + '; color:#ffffff;' +
         'padding:12px 20px; border-radius:8px;' +
         'font-size:0.9em; z-index:9999;' +
         'box-shadow:0 4px 12px rgba(0,0,0,0.3);' +
@@ -390,28 +399,6 @@ function initResultButtons() {
 }
 
 
-// ------------------------------------------------
-// 10. ПАСХАЛКА
-//     Подвійний клік на заголовок h1 — сюрприз!
-// ------------------------------------------------
-
-function initEasterEgg() {
-    var logo = document.querySelector('header h1');
-    if (!logo) return;
-
-    logo.style.cursor = 'pointer';
-    logo.title = 'Спробуй двічі клікнути...';
-
-    logo.addEventListener('dblclick', function() {
-        showPopup(
-            '🎉 Ти знайшов пасхалку!\n\n' +
-            'SoundMood створений з ❤️ у Вінниці.\n' +
-            'Дякуємо що користуєшся нашим сервісом!\n\n' +
-            '🎵 Музика — це мова душі.',
-            'success'
-        );
-    });
-}
 
 
 // ------------------------------------------------
@@ -489,6 +476,200 @@ function initBpmToSecondsConverter() {
 }
 
 
+// ------------------------------------------------
+// 13. ПЕРЕМИКАЧ РЕЖИМУ ЛОГО (SM ↔ SoundMood)
+// ------------------------------------------------
+
+function initLogoToggle() {
+    var logo = document.querySelector('header h1');
+    if (!logo) return;
+
+    logo.innerHTML =
+        '<span class="logo-emoji">🎵</span> ' +
+        '<span class="logo-s">S</span>' +
+        '<span class="logo-h lh1">o</span>' +
+        '<span class="logo-h lh2">u</span>' +
+        '<span class="logo-h lh3">n</span>' +
+        '<span class="logo-h lh4">d</span>' +
+        '<span class="logo-s">M</span>' +
+        '<span class="logo-h lh5">o</span>' +
+        '<span class="logo-h lh6">o</span>' +
+        '<span class="logo-h lh7">d</span>';
+
+    var compact = localStorage.getItem('soundmood-logo') === 'compact';
+    if (compact) logo.classList.add('logo-compact');
+
+    logo.addEventListener('click', function() {
+            compact = !compact;
+            logo.classList.toggle('logo-compact', compact);
+            localStorage.setItem('soundmood-logo', compact ? 'compact' : 'expanded');
+    });
+}
+
+
+// ------------------------------------------------
+// 14. НОТКИ ТІКАЮТЬ ВІД КУРСОРА
+//     CSS translate (окремо від transform-анімації) дозволяє
+//     накладати зміщення поверх noteFloat без конфліктів
+// ------------------------------------------------
+
+function initHeroNotesCursor() {
+    var banner = document.querySelector('.hero-banner');
+    if (!banner) return;
+
+    var notes = Array.prototype.slice.call(banner.querySelectorAll('.note'));
+    var THRESHOLD = 130; // px — радіус реакції
+    var FORCE     = 90;  // px — максимальне відштовхування
+
+    banner.addEventListener('mousemove', function(e) {
+        var mx = e.clientX;
+        var my = e.clientY;
+
+        for (var i = 0; i < notes.length; i++) {
+            var note = notes[i];
+            var r    = note.getBoundingClientRect();
+            var nx   = r.left + r.width  * 0.5;
+            var ny   = r.top  + r.height * 0.5;
+
+            var dx   = nx - mx;
+            var dy   = ny - my;
+            var dist = Math.sqrt(dx * dx + dy * dy);
+
+            if (dist > 0 && dist < THRESHOLD) {
+                var factor = (1 - dist / THRESHOLD);
+                var px = ((dx / dist) * factor * FORCE).toFixed(1);
+                var py = ((dy / dist) * factor * FORCE).toFixed(1);
+                note.style.translate = px + 'px ' + py + 'px';
+            } else {
+                note.style.translate = '0px 0px';
+            }
+        }
+    }, { passive: true });
+
+    banner.addEventListener('mouseleave', function() {
+        for (var i = 0; i < notes.length; i++) {
+            notes[i].style.translate = '0px 0px';
+        }
+    }, { passive: true });
+}
+
+
+// ------------------------------------------------
+// 14. ПАРАЛАКС БАНЕРА
+//     Фон рухається повільніше за сторінку при скролі
+// ------------------------------------------------
+
+function initHeroParallax() {
+    var bg = document.querySelector('.hero-parallax-bg');
+    if (!bg) return;
+
+    window.addEventListener('scroll', function() {
+        bg.style.transform = 'translateY(' + (window.scrollY * 0.42) + 'px)';
+    }, { passive: true });
+}
+
+
+// ------------------------------------------------
+// 14. ПЕРЕМИКАЧ ТЕМ
+//     Плаваюча кнопка з меню вибору теми
+// ------------------------------------------------
+
+var THEMES = [
+    { id: 'sakura',   label: '🌸 Sakura',   desc: 'Ніжно-рожева',  swatch: '#d45fa0' },
+    { id: 'classic',  label: '🔵 Classic',  desc: 'Класична синя', swatch: '#6c63ff' },
+    { id: 'amber',    label: '🟠 Amber',    desc: 'Теплий янтар',  swatch: '#e07800' },
+    { id: 'neon',     label: '💡 Neon',     desc: 'Електричний',   swatch: '#00bfff' },
+    { id: 'ocean',    label: '🌊 Ocean',    desc: 'Морська бірюза', swatch: '#00a896' },
+    { id: 'midnight', label: '🌙 Midnight', desc: 'Опівнічний',    swatch: '#9b5de5' },
+];
+
+function getCssVar(name) {
+    return getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+}
+
+function applyTheme(themeId) {
+    if (themeId === 'sakura') {
+        document.documentElement.removeAttribute('data-theme');
+    } else {
+        document.documentElement.setAttribute('data-theme', themeId);
+    }
+    localStorage.setItem('soundmood-theme', themeId);
+    updateThemeMenuState(themeId);
+}
+
+function updateThemeMenuState(activeId) {
+    var options = document.querySelectorAll('.theme-option');
+    for (var i = 0; i < options.length; i++) {
+        var opt = options[i];
+        var isActive = opt.getAttribute('data-theme-id') === activeId;
+        opt.classList.toggle('active', isActive);
+        opt.querySelector('.theme-option-check').textContent = isActive ? '✓' : '';
+    }
+}
+
+function initThemeSwitcher() {
+    var saved = localStorage.getItem('soundmood-theme') || 'sakura';
+    applyTheme(saved);
+
+    // Обгортка
+    var switcher = document.createElement('div');
+    switcher.className = 'theme-switcher';
+
+    // Головна кнопка
+    var btn = document.createElement('button');
+    btn.className = 'theme-toggle-btn';
+    btn.innerHTML = '🎨 Тема сайту';
+    btn.setAttribute('type', 'button');
+
+    // Меню
+    var menu = document.createElement('div');
+    menu.className = 'theme-menu';
+    menu.innerHTML = '<div class="theme-menu-title">Оберіть тему</div>';
+
+    // Опції
+    for (var i = 0; i < THEMES.length; i++) {
+        (function(theme) {
+            var opt = document.createElement('button');
+            opt.className = 'theme-option';
+            opt.setAttribute('type', 'button');
+            opt.setAttribute('data-theme-id', theme.id);
+            opt.innerHTML =
+                '<span class="theme-swatch" style="background:' + theme.swatch + '"></span>' +
+                '<span class="theme-option-name">' + theme.label + '<br>' +
+                '<small style="color:#999;font-weight:normal">' + theme.desc + '</small></span>' +
+                '<span class="theme-option-check"></span>';
+
+            opt.addEventListener('click', function() {
+                applyTheme(theme.id);
+                menu.classList.remove('open');
+            });
+
+            menu.appendChild(opt);
+        })(THEMES[i]);
+    }
+
+    // Відкриття/закриття меню
+    btn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        menu.classList.toggle('open');
+    });
+
+    document.addEventListener('click', function() {
+        menu.classList.remove('open');
+    });
+
+    menu.addEventListener('click', function(e) {
+        e.stopPropagation();
+    });
+
+    switcher.appendChild(menu);
+    switcher.appendChild(btn);
+    document.body.appendChild(switcher);
+
+    updateThemeMenuState(saved);
+}
+
+
 // ================================================
 // ЗАПУСК ВСІХ ФУНКЦІЙ ПІСЛЯ ЗАВАНТАЖЕННЯ СТОРІНКИ
 // ================================================
@@ -496,15 +677,19 @@ function initBpmToSecondsConverter() {
 // document.addEventListener('DOMContentLoaded') — чекаємо поки HTML завантажиться
 document.addEventListener('DOMContentLoaded', function() {
 
-    markActiveNav();           // 1. Активне меню
-    initBpmConverter();        // 2. BPM → настрій
-    initCharCounter();         // 3. Лічильник символів textarea
+    markActiveNav();             // 1. Активне меню
+    initBpmConverter();          // 2. BPM → настрій
+    initCharCounter();           // 3. Лічильник символів textarea
     initContactFormValidation(); // 4. Валідація форми
-    initResetConfirmation();   // 5. Підтвердження скидання
-    initGeneratorAnimation();  // 6. Анімація генерації
-    initResultButtons();       // 9. Toast для кнопок result
-    initEasterEgg();           // 10. Пасхалка
-    initTrackNameCounter();    // 11. Лічильник назви треку
+    initResetConfirmation();     // 5. Підтвердження скидання
+    initGeneratorAnimation();    // 6. Анімація генерації
+    initResultButtons();         // 9. Toast для кнопок result
+    initTrackNameCounter();      // 11. Лічильник назви треку
     initBpmToSecondsConverter(); // 12. Конвертор BPM→секунди
+    initLogoToggle();            // 13. Перемикач режиму лого SM ↔ SoundMood
+    initHeroNotesCursor();       // 14. Нотки тікають від курсора
+    initHeroParallax();          // 14. Паралакс банера
+    initThemeSwitcher();         // 14. Перемикач тем
 
 });
+
