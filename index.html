@@ -4,6 +4,10 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>SoundMood — Генератор саундтреків</title>
+  <script>try{var _t=localStorage.getItem('soundmood-theme');if(_t&&_t!=='sakura')document.documentElement.setAttribute('data-theme',_t);}catch(e){}</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700;800&display=swap">
   <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
@@ -229,15 +233,21 @@
       генерує музику на основі заданих параметрів:
     </p>
 
-    <iframe
-            width="560"
-            height="315"
-            src="https://www.youtube.com/embed/89yDiQ8WkNg?si=QuWkalCaR1E6Y22K"
-            title="Як AI генерує музику"
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen>
-    </iframe>
+    <div class="youtube-facade"
+         data-video-id="89yDiQ8WkNg"
+         data-title="Як AI генерує музику"
+         role="button"
+         tabindex="0"
+         aria-label="Відтворити відео: Як AI генерує музику">
+      <img src="https://i.ytimg.com/vi/89yDiQ8WkNg/hqdefault.jpg"
+           alt="Прев'ю відео: Як AI генерує музику"
+           loading="lazy">
+      <div class="yt-play-btn" aria-hidden="true">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M8 5v14l11-7z"/>
+        </svg>
+      </div>
+    </div>
   </section>
 
   <hr/>
@@ -289,6 +299,6 @@
   <p><small>Навчальний проект · Версія 1.0 Beta</small></p>
 </footer>
 
-<script src="script.js"></script>
+<script src="script.js" defer></script>
 </body>
 </html>

@@ -477,7 +477,50 @@ function initBpmToSecondsConverter() {
 
 
 // ------------------------------------------------
-// 13. АДАПТИВНЕ БУРГЕР-МЕНЮ
+// 13. YOUTUBE FACADE
+//     Не завантажує iframe при відкритті сторінки —
+//     iframe з'являється лише після кліку користувача.
+//     Це усуває куки Google/YouTube при першому завантаженні.
+// ------------------------------------------------
+
+function initYoutubeFacades() {
+    var facades = document.querySelectorAll('.youtube-facade');
+    if (!facades.length) return;
+
+    function loadVideo(el) {
+        var videoId  = el.getAttribute('data-video-id');
+        var title    = el.getAttribute('data-title') || 'YouTube Video';
+        var iframe   = document.createElement('iframe');
+        iframe.src          = 'https://www.youtube-nocookie.com/embed/' + videoId + '?autoplay=1&rel=0';
+        iframe.title        = title;
+        iframe.allow        = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+        iframe.allowFullscreen = true;
+        el.innerHTML        = '';
+        el.appendChild(iframe);
+        el.removeAttribute('tabindex');
+        el.removeAttribute('role');
+        el.removeAttribute('aria-label');
+        el.style.cursor = 'default';
+    }
+
+    for (var i = 0; i < facades.length; i++) {
+        (function(el) {
+            el.addEventListener('click', function() {
+                loadVideo(el);
+            });
+            el.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    loadVideo(el);
+                }
+            });
+        })(facades[i]);
+    }
+}
+
+
+// ------------------------------------------------
+// 14. АДАПТИВНЕ БУРГЕР-МЕНЮ
 //     На мобільних пристроях показує кнопку ☰
 //     яка розкриває/закриває навігацію
 // ------------------------------------------------
@@ -584,29 +627,40 @@ function initHeroNotesCursor() {
     var THRESHOLD = 130; // px — радіус реакції
     var FORCE     = 90;  // px — максимальне відштовхування
 
+    var rafPending = false;
+    var lastMx = 0, lastMy = 0;
+
     banner.addEventListener('mousemove', function(e) {
-        var mx = e.clientX;
-        var my = e.clientY;
-
-        for (var i = 0; i < notes.length; i++) {
-            var note = notes[i];
-            var r    = note.getBoundingClientRect();
-            var nx   = r.left + r.width  * 0.5;
-            var ny   = r.top  + r.height * 0.5;
-
-            var dx   = nx - mx;
-            var dy   = ny - my;
-            var dist = Math.sqrt(dx * dx + dy * dy);
-
-            if (dist > 0 && dist < THRESHOLD) {
-                var factor = (1 - dist / THRESHOLD);
-                var px = ((dx / dist) * factor * FORCE).toFixed(1);
-                var py = ((dy / dist) * factor * FORCE).toFixed(1);
-                note.style.translate = px + 'px ' + py + 'px';
-            } else {
-                note.style.translate = '0px 0px';
+        lastMx = e.clientX;
+        lastMy = e.clientY;
+        if (rafPending) return;
+        rafPending = true;
+        requestAnimationFrame(function() {
+            rafPending = false;
+            // Спочатку читаємо всі позиції (batch reads → без layout thrashing)
+            var rects = [];
+            for (var i = 0; i < notes.length; i++) {
+                rects.push(notes[i].getBoundingClientRect());
             }
-        }
+            // Потім записуємо всі стилі (batch writes)
+            for (var i = 0; i < notes.length; i++) {
+                var r    = rects[i];
+                var nx   = r.left + r.width  * 0.5;
+                var ny   = r.top  + r.height * 0.5;
+                var dx   = nx - lastMx;
+                var dy   = ny - lastMy;
+                var dist = Math.sqrt(dx * dx + dy * dy);
+
+                if (dist > 0 && dist < THRESHOLD) {
+                    var factor = (1 - dist / THRESHOLD);
+                    var px = ((dx / dist) * factor * FORCE).toFixed(1);
+                    var py = ((dy / dist) * factor * FORCE).toFixed(1);
+                    notes[i].style.translate = px + 'px ' + py + 'px';
+                } else {
+                    notes[i].style.translate = '0px 0px';
+                }
+            }
+        });
     }, { passive: true });
 
     banner.addEventListener('mouseleave', function() {
@@ -626,8 +680,14 @@ function initHeroParallax() {
     var bg = document.querySelector('.hero-parallax-bg');
     if (!bg) return;
 
+    var scrollTicking = false;
     window.addEventListener('scroll', function() {
-        bg.style.transform = 'translateY(' + (window.scrollY * 0.42) + 'px)';
+        if (scrollTicking) return;
+        scrollTicking = true;
+        requestAnimationFrame(function() {
+            bg.style.transform = 'translateY(' + (window.scrollY * 0.42) + 'px)';
+            scrollTicking = false;
+        });
     }, { passive: true });
 }
 
@@ -749,7 +809,8 @@ document.addEventListener('DOMContentLoaded', function() {
     initResultButtons();         // 9. Toast для кнопок result
     initTrackNameCounter();      // 11. Лічильник назви треку
     initBpmToSecondsConverter(); // 12. Конвертор BPM→секунди
-    initHamburgerMenu();         // 13. Адаптивне бургер-меню
+    initYoutubeFacades();        // 13. YouTube facade (без кукі при завантаженні)
+    initHamburgerMenu();         // 14. Адаптивне бургер-меню
     initLogoToggle();            // 14. Перемикач режиму лого SM ↔ SoundMood
     initHeroNotesCursor();       // 15. Нотки тікають від курсора
     initHeroParallax();          // 16. Паралакс банера

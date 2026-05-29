@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700;800&display=swap');
-
 /* ===== CSS Custom Properties — Default: Sakura ===== */
 :root {
     --color-primary:     #5c2a4a;
@@ -44,7 +42,7 @@
 [data-theme="neon"] {
     --color-primary:     #0a2640;
     --color-accent:      #00bfff;
-    --color-accent-dark: #0099cc;
+    --color-accent-dark: #0077aa;
     --color-nav-bg:      #0e3d5c;
     --color-light-text:  #9ee8ff;
     --color-light-bg:    #e6f8ff;
@@ -150,7 +148,7 @@ table {
 }
 
 th {
-    background-color: var(--color-accent);
+    background-color: var(--color-accent-dark);
     color: #ffffff;
     padding: 10px 14px;
     text-align: left;
@@ -387,7 +385,7 @@ nav ul li a {
 }
 
 nav ul li a:hover {
-    background-color: var(--color-accent);
+    background-color: var(--color-accent-dark);
     color: #ffffff;
     text-decoration: none;
     transform: translateY(-2px);
@@ -395,11 +393,12 @@ nav ul li a:hover {
 
 nav ul li a:active {
     background-color: var(--color-accent-dark);
+    filter: brightness(0.85);
     transform: translateY(0);
 }
 
 nav ul li a.nav-active {
-    background-color: var(--color-accent);
+    background-color: var(--color-accent-dark);
     font-weight: 700;
 }
 
@@ -428,22 +427,23 @@ footer p {
 .btn {
     display: inline-block;
     padding: 9px 20px;
-    background-color: var(--color-accent);
+    background-color: var(--color-accent-dark);
     color: #ffffff;
     border: none;
     border-radius: 5px;
     font-size: 0.95em;
     cursor: pointer;
     text-decoration: none;
-    transition: background-color 0.2s, transform 0.2s;
+    transition: background-color 0.2s, transform 0.2s, filter 0.2s;
 }
 
 .btn:hover {
     background-color: var(--color-accent-dark);
+    filter: brightness(0.85);
     color: #ffffff;
     text-decoration: none;
     transform: scale(1.06);
-    transition: background-color 0.2s, transform 0.2s;
+    transition: background-color 0.2s, transform 0.2s, filter 0.2s;
 }
 
 .highlight {
@@ -471,9 +471,9 @@ footer p {
 }
 
 .warning {
-    color: #cc4400;
+    color: #c03500;
     background-color: #fff4f0;
-    border-left: 4px solid #cc4400;
+    border-left: 4px solid #c03500;
     padding: 10px 16px;
     border-radius: 0 4px 4px 0;
     font-size: 0.9em;
@@ -481,7 +481,7 @@ footer p {
 
 .badge {
     display: inline-block;
-    background-color: var(--color-accent);
+    background-color: var(--color-accent-dark);
     color: #ffffff;
     font-size: 0.75em;
     padding: 3px 9px;
@@ -492,7 +492,7 @@ footer p {
 
 button[type="submit"],
 button[type="button"] {
-    background-color: var(--color-accent);
+    background-color: var(--color-accent-dark);
     color: #ffffff;
     border: none;
     padding: 9px 20px;
@@ -501,16 +501,17 @@ button[type="button"] {
     cursor: pointer;
     margin-right: 8px;
     margin-top: 6px;
-    transition: background-color 0.2s;
+    transition: background-color 0.2s, filter 0.2s;
 }
 
 button[type="submit"]:hover,
 button[type="button"]:hover {
     background-color: var(--color-accent-dark);
+    filter: brightness(0.85);
 }
 
 button[type="reset"] {
-    background-color: #888888;
+    background-color: #6c6c6c;
     color: #ffffff;
     border: none;
     padding: 9px 20px;
@@ -829,6 +830,80 @@ button[type="reset"]:hover {
     margin-bottom: 0;
 }
 
+/* ===== YOUTUBE FACADE ===== */
+.youtube-facade {
+    position: relative;
+    aspect-ratio: 16 / 9;
+    background: #1a1a1a;
+    cursor: pointer;
+    max-width: 100%;
+    border-radius: 6px;
+    overflow: hidden;
+    display: block;
+    margin-bottom: 20px;
+}
+
+.youtube-facade img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: filter 0.25s;
+    border-radius: 0;
+    margin-bottom: 0;
+}
+
+.youtube-facade:hover img,
+.youtube-facade:focus img {
+    filter: brightness(0.7);
+}
+
+.youtube-facade:focus {
+    outline: 3px solid var(--color-accent);
+    outline-offset: 3px;
+}
+
+.yt-play-btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 72px;
+    height: 50px;
+    background: rgba(255, 0, 0, 0.88);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+    transition: background 0.15s, transform 0.15s;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
+}
+
+.youtube-facade:hover .yt-play-btn,
+.youtube-facade:focus .yt-play-btn {
+    background: #ff0000;
+    transform: translate(-50%, -50%) scale(1.1);
+}
+
+.yt-play-btn svg {
+    width: 26px;
+    height: 26px;
+    fill: #ffffff;
+    margin-left: 5px;
+}
+
+.youtube-facade iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: 0;
+    aspect-ratio: auto;
+}
+
 /* ===== HAMBURGER BUTTON ===== */
 .hamburger-btn {
     display: none;
@@ -893,7 +968,8 @@ button[type="reset"]:hover {
 }
 
 .theme-toggle-btn:hover {
-    background-color: var(--color-accent);
+    background-color: var(--color-accent-dark);
+    filter: brightness(0.88);
     transform: scale(1.05);
 }
 
