@@ -477,7 +477,70 @@ function initBpmToSecondsConverter() {
 
 
 // ------------------------------------------------
-// 13. ПЕРЕМИКАЧ РЕЖИМУ ЛОГО (SM ↔ SoundMood)
+// 13. АДАПТИВНЕ БУРГЕР-МЕНЮ
+//     На мобільних пристроях показує кнопку ☰
+//     яка розкриває/закриває навігацію
+// ------------------------------------------------
+
+function initHamburgerMenu() {
+    var nav = document.querySelector('header nav');
+    if (!nav) return;
+
+    var btn = document.createElement('button');
+    btn.className = 'hamburger-btn';
+    btn.setAttribute('aria-label', 'Відкрити меню');
+    btn.setAttribute('aria-expanded', 'false');
+    btn.setAttribute('type', 'button');
+    btn.innerHTML = '<span></span><span></span><span></span>';
+
+    // Вставляємо кнопку перед nav у header
+    nav.parentNode.insertBefore(btn, nav);
+
+    function openMenu() {
+        nav.classList.add('nav-open');
+        btn.classList.add('active');
+        btn.setAttribute('aria-expanded', 'true');
+    }
+
+    function closeMenu() {
+        nav.classList.remove('nav-open');
+        btn.classList.remove('active');
+        btn.setAttribute('aria-expanded', 'false');
+    }
+
+    btn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        if (nav.classList.contains('nav-open')) {
+            closeMenu();
+        } else {
+            openMenu();
+        }
+    });
+
+    // Закриваємо при кліку поза меню
+    document.addEventListener('click', function(e) {
+        if (!nav.contains(e.target) && e.target !== btn && !btn.contains(e.target)) {
+            closeMenu();
+        }
+    });
+
+    // Закриваємо при переході за посиланням
+    var links = nav.querySelectorAll('a');
+    for (var i = 0; i < links.length; i++) {
+        links[i].addEventListener('click', closeMenu);
+    }
+
+    // Закриваємо при зміні розміру вікна на десктоп
+    window.addEventListener('resize', function() {
+        if (window.innerWidth > 768) {
+            closeMenu();
+        }
+    });
+}
+
+
+// ------------------------------------------------
+// 14. ПЕРЕМИКАЧ РЕЖИМУ ЛОГО (SM ↔ SoundMood)
 // ------------------------------------------------
 
 function initLogoToggle() {
@@ -686,10 +749,11 @@ document.addEventListener('DOMContentLoaded', function() {
     initResultButtons();         // 9. Toast для кнопок result
     initTrackNameCounter();      // 11. Лічильник назви треку
     initBpmToSecondsConverter(); // 12. Конвертор BPM→секунди
-    initLogoToggle();            // 13. Перемикач режиму лого SM ↔ SoundMood
-    initHeroNotesCursor();       // 14. Нотки тікають від курсора
-    initHeroParallax();          // 14. Паралакс банера
-    initThemeSwitcher();         // 14. Перемикач тем
+    initHamburgerMenu();         // 13. Адаптивне бургер-меню
+    initLogoToggle();            // 14. Перемикач режиму лого SM ↔ SoundMood
+    initHeroNotesCursor();       // 15. Нотки тікають від курсора
+    initHeroParallax();          // 16. Паралакс банера
+    initThemeSwitcher();         // 17. Перемикач тем
 
 });
 
